@@ -1,10 +1,11 @@
 from pathlib import Path
+import argparse
 import cv2
 import numpy as np
 from paddleocr import PaddleOCR
 
 #https://huggingface.co/PaddlePaddle/models?search=cyrill
-MIN_SCORE = 0.3  # drop anything below 30% confidence (equivalent to old drop_score=0.3)
+MIN_SCORE = 0.3  # drop anything below 30% confidence
 
 
 def preprocess(img_path: str) -> str:
@@ -31,7 +32,11 @@ def preprocess(img_path: str) -> str:
 
 
 def main():
-    img_path = Path(__file__).resolve().parents[2] / "assets" / "atb-receipt_1.png"
+    parser = argparse.ArgumentParser(description="Run PaddleOCR on a receipt image")
+    parser.add_argument("img_path", help="Path to the receipt image file")
+    args = parser.parse_args()
+    img_path = Path(args.img_path)
+    print(f"=== PADDLEOCR RECEIPT OCR === for {img_path}")
 
     ocr = PaddleOCR(
         text_detection_model_name="PP-OCRv4_mobile_det",

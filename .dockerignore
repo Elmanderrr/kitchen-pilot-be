@@ -1,0 +1,6 @@
+node_modules
+dist
+.venv
+.git
+coverage
+*.log
