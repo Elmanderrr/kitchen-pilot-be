@@ -6,4 +6,4 @@ services:
     environment:
       - PYTHON_BIN=python3
     volumes:
-      - .:/app
+      - ./src:/app/src

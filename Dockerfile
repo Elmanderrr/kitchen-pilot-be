@@ -2,7 +2,8 @@ FROM node:20-slim
 
 RUN apt-get update && apt-get install -y \
     python3 python3-pip python3-venv \
-    libgl1 libglib2.0-0 libsm6 libxext6 libxrender-dev \
+    libgl1 libglib2.0-0 libsm6 libxext6 libxrender-dev  \
+    psmisc \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
